@@ -17,5 +17,9 @@ vector<double> OutputLayer::backward(const vector<double>& target, double lr) {
         for (size_t j = 0; j < weights[i].size(); j++)
             weights[i][j] += lr * delta[i] * lastInput[j];
 
+    // 편향 갱신 : b = b + lr * delta
+    for (size_t i = 0; i < bias.size(); i++)
+        bias[i] += lr * delta[i];
+
     return propagated;    // 은닉층 뉴런 수 크기의 벡터
 }

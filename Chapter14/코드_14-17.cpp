@@ -16,5 +16,9 @@ vector<double> HiddenLayer::backward(const vector<double>& propagatedError, doub
         for (size_t j = 0; j < weights[i].size(); j++)
             weights[i][j] += lr * delta[i] * lastInput[j];
 
+    // 편향 갱신 : b = b + lr * delta
+    for (size_t i = 0; i < bias.size(); i++)
+        bias[i] += lr * delta[i];
+
     return propagated;
 }
